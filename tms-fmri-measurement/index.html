@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en-US" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10.0, user-scalable=yes"/><title>TMS fMRI Measurement | </title>
-<meta name="description" content="BEST Toolbox Wiki - " /><link rel="pingback" href="https://best-toolbox.github.io/wiki/xmlrpc.php"><link rel='dns-prefetch' href='//s.w.org' />
+<meta name="description" content="BEST Toolbox Wiki - BEST Toolbox" /><link rel="pingback" href="https://best-toolbox.github.io/wiki/xmlrpc.php"><link rel='dns-prefetch' href='//s.w.org' />
 <link rel="alternate" type="application/rss+xml" title="BEST Toolbox Wiki &raquo; Feed" href="https://best-toolbox.github.io/wiki/feed/" />
 <link rel="alternate" type="application/rss+xml" title="BEST Toolbox Wiki &raquo; Comments Feed" href="https://best-toolbox.github.io/wiki/comments/feed/" />
 		<script type="text/javascript">
@@ -57,7 +57,7 @@ var _EPYT_ = {"ajaxurl":"https:\/\/best-toolbox.github.io\/wiki\/wp-admin\/admin
 <link rel='shortlink' href='https://best-toolbox.github.io/wiki/?p=117' />
 <link rel="alternate" type="application/json+oembed" href="https://best-toolbox.github.io/wiki/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fbest-toolbox.github.io%2Fwiki%2Ftms-fmri-measurement%2F" />
 <link rel="alternate" type="text/xml+oembed" href="https://best-toolbox.github.io/wiki/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fbest-toolbox.github.io%2Fwiki%2Ftms-fmri-measurement%2F&#038;format=xml" />
-</head><body class="page-template-default page page-id-117 body"><header class="headerMain"><div class="header-content"><div id="logo"><h2 class="blog-name"><a href="https://best-toolbox.github.io/wiki/">BEST Toolbox Wiki</a></h2></div></div></header><div class="container-fluid"><div class="meta clearfix"><div class="meta-search-form"><form role="search" method="get" class="search-form" action="https://best-toolbox.github.io/wiki/"><label><input type="search" class="search-field" placeholder="Search" value="" name="s" title="Search" /></label><input type="submit" class="search-submit" value="Search" /></form></div></div><div class="navMenuButton">
+</head><body class="page-template-default page page-id-117 body"><header class="headerMain"><div class="header-content"><div id="logo"><h2 class="blog-name"><a href="https://best-toolbox.github.io/wiki/">BEST Toolbox Wiki</a></h2><span class="blog-description">BEST Toolbox</span></div></div></header><div class="container-fluid"><div class="meta clearfix"><div class="meta-search-form"><form role="search" method="get" class="search-form" action="https://best-toolbox.github.io/wiki/"><label><input type="search" class="search-field" placeholder="Search" value="" name="s" title="Search" /></label><input type="submit" class="search-submit" value="Search" /></form></div></div><div class="navMenuButton">
     <header class="navMenuButtonTitle">Menu</header>
     <div class="navMenuButtonContent">
         <hr>
@@ -70,9 +70,7 @@ var _EPYT_ = {"ajaxurl":"https:\/\/best-toolbox.github.io\/wiki\/wp-admin\/admin
     <div class="primary-menu-container">
         <nav class="nav-container">
             <div class="menu-primary-container"><ul class="main-menu"><li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-142"><a href="https://best-toolbox.github.io/wiki/">Home</a></li>
-<li id="menu-item-141" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-141"><a href="https://best-toolbox.github.io/wiki/toolbox-architecture/">Toolbox Architecture</a></li>
 <li id="menu-item-140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-140"><a href="https://best-toolbox.github.io/wiki/download-setup/">Download &#038; Setup</a></li>
-<li id="menu-item-139" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-139"><a href="https://best-toolbox.github.io/wiki/application-walkthrough/">Application Walkthrough</a></li>
 <li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-191"><a href="https://best-toolbox.github.io/wiki/start-best-toolbox-application/">Start BEST Toolbox Application</a></li>
 <li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://best-toolbox.github.io/wiki/design-experiment/">Design Experiment</a></li>
 <li id="menu-item-138" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-138"><a href="https://best-toolbox.github.io/wiki/hardware-configuration/">Hardware Configuration</a></li>
@@ -103,7 +101,93 @@ var _EPYT_ = {"ajaxurl":"https:\/\/best-toolbox.github.io\/wiki\/wp-admin\/admin
     </header>
 
     <div class="entryContent">
-            </div>
+        
+<p>TMS fMRI Measurement Protocol of the BEST Toolbox allows to deliver TTL output signal in order to trigger TMS or any other device connected with the TTL output of a purpose built Arduino. The embedded system of Arduino is programmed to read in the MRI Volume triggers as inputs and perform book keeping of the triggers in order to precisely deliver the TMS pulse in between the MRI Volumes.</p>
+
+
+
+<h2><span class="ez-toc-section" id="Parameters_Syntax"></span>Parameters Syntax<span class="ez-toc-section-end"></span></h2>
+
+
+
+<h3><span class="ez-toc-section" id="Time_of_Acquisition_(TA)"></span>Time of Acquisition (TA)<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>TA in ms , scalar.</p>
+
+
+
+<h3><span class="ez-toc-section" id="Trigger_Delay"></span>Trigger Delay <span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Scalar period in ms that defines the time of trigger relative to start of the volume. For an instance, given the TA of 916ms, if one desires to deliver the stimulation trigger output at the 930ms relative to start of this volume, that reflect the output trigger is delayed by 14ms in the period of silence i.e. when there is no acquisition of Volume is taking place. TA+Trigger Delay=Time of Output Trigger </p>
+
+
+
+<h3><span class="ez-toc-section" id="Total_Volumes"></span>Total Volumes<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Number of total volumes in the whole scan e.g. 900.</p>
+
+
+
+<h3><span class="ez-toc-section" id="Inter_Trial_Interval"></span>Inter Trial Interval<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>1xN vector of Volumes number to be randomly selected as interval between triggers e.g. [18 19 20 21 22]. The trigger happens at the Volume immediately after the given volume number, e.g. if the ITI is 18 then the next stimulation trigger will occur at the Time to 18 Volumes + TA+ Trigger delay .</p>
+
+
+
+<h3><span class="ez-toc-section" id="Stimulation_Intensities"></span>Stimulation Intensities <span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>1xN vector of Intensities condition e.g. [30 40 50 60 70 80]</p>
+
+
+
+<h3><span class="ez-toc-section" id="Intensity_Units"></span>Intensity Units<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>%MSO corresponds to Maximum Stimulation Output, %MT corresponds to Motor Threshold</p>
+
+
+
+<h3><span class="ez-toc-section" id="Motor_Threshold"></span>Motor Threshold<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>If the Intensity Units are %MT then an integral Threshold intensity is required here in %MSO units such as 45</p>
+
+
+
+<h3><span class="ez-toc-section" id="Volume_Vector"></span>Volume Vector:<span class="ez-toc-section-end"></span></h3>
+
+
+
+<p>Variable name that has been created in MATLAB&#8217;s base workspace (default of MATLAB Command window). Its a 1xN vector of Volumes number after each of which the trigger output has to be generated , where as N equals Number of Total Volumes.</p>
+
+
+
+<h2><span class="ez-toc-section" id="Starting_the_Protocol"></span>Starting the Protocol<span class="ez-toc-section-end"></span></h2>
+
+
+
+<p>To start the Protocol, just press the &#8220;Run&#8221; button at the bottom of the &#8220;Experiment Controller&#8221;. Unlike all other measures, this measure cannot be pause/unpause however can be stopped,  In order to check if all the parameters have been setup correctly, pressing the &#8220;Compile&#8221; button would prompt the results of compiled code whether its good to go or not.</p>
+
+
+
+<p>An instance of the filled stimulation parameters panel is shown below.</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="https://best-toolbox.github.io/wiki/wp-content/uploads/2020/05/image-12-1024x555.png" alt="" class="wp-image-589" srcset="https://best-toolbox.github.io/wiki/wp-content/uploads/2020/05/image-12-1024x555.png 1024w, https://best-toolbox.github.io/wiki/wp-content/uploads/2020/05/image-12-300x163.png 300w, https://best-toolbox.github.io/wiki/wp-content/uploads/2020/05/image-12-768x417.png 768w, https://best-toolbox.github.io/wiki/wp-content/uploads/2020/05/image-12-1536x833.png 1536w, https://best-toolbox.github.io/wiki/wp-content/uploads/2020/05/image-12-2048x1111.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+    </div>
 
     <footer class="entryMeta">
             </footer>
@@ -130,22 +214,32 @@ var _EPYT_ = {"ajaxurl":"https:\/\/best-toolbox.github.io\/wiki\/wp-admin\/admin
         <div class="dynamicSidebar">
             <div class="row sidebarContent">
                 <div class="col-md-12">
-                                    </div>
+                    <div class="widget" id="ezw_tco-3"><div class="ez-toc-widget-container ez-toc-v2_0_11 ez-toc-widget counter-hierarchy counter-decimal">
+
+					<h4 class="widgetTitle">
+					<span class="ez-toc-title-container">
+
+						<style type="text/css">
+							#ezw_tco-3 .ez-toc-widget-container ul.ez-toc-list li.active::before {
+								background-color: #ededed;
+							}
+						</style>
+
+						<span class="ez-toc-title">Table of Contents</span>
+
+						<span class="ez-toc-title-toggle">
+
+							<a class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle"><i class="ez-toc-glyphicon ez-toc-icon-toggle"></i></a>
+						</span>
+
+					</span>
+
+					</h4>
+					<nav>
+<ul class="ez-toc-list ez-toc-list-level-1"><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-1" href="#Parameters_Syntax" title="Parameters Syntax">Parameters Syntax</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-2" href="#Time_of_Acquisition_(TA)" title="Time of Acquisition (TA)">Time of Acquisition (TA)</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-3" href="#Trigger_Delay" title="Trigger Delay ">Trigger Delay </a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-4" href="#Total_Volumes" title="Total Volumes">Total Volumes</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-5" href="#Inter_Trial_Interval" title="Inter Trial Interval">Inter Trial Interval</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-6" href="#Stimulation_Intensities" title="Stimulation Intensities ">Stimulation Intensities </a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-7" href="#Intensity_Units" title="Intensity Units">Intensity Units</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-8" href="#Motor_Threshold" title="Motor Threshold">Motor Threshold</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-9" href="#Volume_Vector" title="Volume Vector:">Volume Vector:</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-10" href="#Starting_the_Protocol" title="Starting the Protocol">Starting the Protocol</a></li></ul></nav>
+</div>
+</div>                </div>
             </div>
         </div>
     </div>
-</aside></div><footer class="container-fluid"><div class="content clearfix"><div class="col-md-4 dynamic-sidebar-footer-middle"><ul class="widget_text dynamic-sidebar-widget sidebar-footer-widget" id="custom_html-3"><div class="textwidget custom-html-widget"></div></ul></div><div class="col-md-12 copyright"><p><strong>&copy;&nbsp;&nbsp;<a href="https://best-toolbox.github.io/wiki">BEST Toolbox Wiki</a></strong>&nbsp;&nbsp;|&nbsp;&nbsp;powered by the&nbsp;<a href="http://wikiwp.com/" title="Wikipedia look-a-like theme for WordPress">WikiWP theme</a> and&nbsp;<a href="http://wordpress.org/" target="_blank">WordPress</a>. &nbsp; | &nbsp; <a class="footer-rss-link" href="https://best-toolbox.github.io/wiki/feed/" title="RSS Feed">RSS</a></p></div></div></footer><script type='text/javascript'>
-/* <![CDATA[ */
-var sticky_anything_engage = {"element":".primary-menu-container","topspace":"14","minscreenwidth":"0","maxscreenwidth":"999999","zindex":"1","legacymode":"","dynamicmode":"","debugmode":"","pushup":"","adminbar":"1"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='https://best-toolbox.github.io/wiki/wp-content/plugins/sticky-menu-or-anything-on-scroll/assets/js/stickThis.js?ver=2.1.1'></script>
-<script type='text/javascript'>
-/* <![CDATA[ */
-var q2w3_sidebar_options = [{"sidebar":"sidebar-1","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["ezw_tco-3"]}];
-/* ]]> */
-</script>
-<script type='text/javascript' src='https://best-toolbox.github.io/wiki/wp-content/plugins/q2w3-fixed-widget/js/q2w3-fixed-widget.min.js?ver=5.1.9'></script>
-<script type='text/javascript' src='https://best-toolbox.github.io/wiki/wp-content/plugins/youtube-embed-plus/scripts/fitvids.min.js?ver=13.3.1'></script>
-<script type='text/javascript' src='https://best-toolbox.github.io/wiki/wp-includes/js/wp-embed.min.js?ver=5.4.1'></script>
-</body></html>
+</aside></div><footer class="container-fluid"><div class="content clearfix"><div class="col-md-4 dynamic-sidebar-footer-middle"><ul class="widget_text dynamic-sidebar-widget sidebar-footer-widget" id="custom_html-3"><div class="textwidget custom-html-widget"></div></ul></div>
